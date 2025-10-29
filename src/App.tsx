@@ -144,15 +144,21 @@ export default function App() {
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <span className="text-[#4ec9b0]">📧</span>
-            <span className="text-[#ce9178]">andrewli0420@gmail.com</span>
+            <a href="mailto:andrewli0420@gmail.com" className="text-[#9cdcfe] hover:text-[#569cd6] underline">
+              andrewli0420@gmail.com
+            </a>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#4ec9b0]">💼</span>
-            <span className="text-[#ce9178]">linkedin.com/in/andrewli07</span>
+            <a href="https://www.linkedin.com/in/andrewli07/" target="_blank" rel="noopener noreferrer" className="text-[#9cdcfe] hover:text-[#569cd6] underline">
+              linkedin.com/in/andrewli07
+            </a>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#4ec9b0]">🐙</span>
-            <span className="text-[#ce9178]">github.com/AndrewLi0420</span>
+            <a href="https://github.com/AndrewLi0420" target="_blank" rel="noopener noreferrer" className="text-[#9cdcfe] hover:text-[#569cd6] underline">
+              github.com/AndrewLi0420
+            </a>
           </div>
         </div>
       </div>
@@ -196,13 +202,13 @@ export default function App() {
   const welcomeMessage = (
     <div className="text-[#cccccc]">
       <div className="text-[#4ec9b0] mb-2">
-        ╔═══════════════════════════════════════════════════════════════╗
+        ╔═════════════════════════════════════════════════════════════╗
       </div>
         <div className="text-[#4ec9b0]">
           ║   My name is Andrew - Computer Science & Applied Math Student      ║
         </div>
       <div className="text-[#4ec9b0] mb-4">
-        ╚═══════════════════════════════════════════════════════════════╝
+        ╚═════════════════════════════════════════════════════════════╝
       </div>
       <div className="text-[#569cd6] mb-2">Type 'help' to see available commands</div>
       <div className="text-[#6a9955] mb-2">
@@ -235,9 +241,9 @@ export default function App() {
             <a href="mailto:andrewli0420@gmail.com" className="text-[#9cdcfe] hover:text-[#569cd6] transition-colors">
               <Mail className="w-5 h-5" />
             </a>
-            <a href="#" className="text-[#9cdcfe] hover:text-[#569cd6] transition-colors">
-              <FileText className="w-5 h-5" />
-            </a>
+        <a href="https://drive.google.com/file/d/1p6lK02JviqCiz3OuCQNnPW3YUZwaKAwf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="text-[#9cdcfe] hover:text-[#569cd6] transition-colors">
+          <FileText className="w-5 h-5" />
+        </a>
           </div>
         </div>
 
@@ -388,7 +394,7 @@ export default function App() {
                   <Github className="w-5 h-5" />
                   GitHub Profile
                 </a>
-                <a href="#" className="flex items-center gap-3 text-[#9cdcfe] hover:text-[#569cd6] transition-colors">
+                <a href="https://drive.google.com/file/d/1p6lK02JviqCiz3OuCQNnPW3YUZwaKAwf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#9cdcfe] hover:text-[#569cd6] transition-colors">
                   <FileText className="w-5 h-5" />
                   Resume/CV
                 </a>
