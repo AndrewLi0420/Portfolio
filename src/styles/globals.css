@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 222 14% 12%;
+    --foreground: 0 0% 83%;
+    --card: 240 4% 15%;
+    --card-foreground: 0 0% 83%;
+    --popover: 222 14% 12%;
+    --popover-foreground: 0 0% 83%;
+    --primary: 207 82% 66%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 41 37% 68%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 240 4% 15%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 142 43% 54%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 63% 61%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 20%;
+    --input: 240 4% 20%;
+    --ring: 207 82% 66%;
+    --chart-1: 207 82% 66%;
+    --chart-2: 142 43% 54%;
+    --chart-3: 41 37% 68%;
+    --chart-4: 340 82% 52%;
+    --chart-5: 271 76% 53%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.75rem;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
