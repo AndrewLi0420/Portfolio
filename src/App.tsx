@@ -282,15 +282,8 @@ export default function App() {
                 <Code2 className="w-5 h-5" />
                 About Me
               </h2>
-              <p className="text-[#cccccc] mb-4">
-                I'm a Computer Science and Applied Math student at UC Berkeley with a 4.0 GPA, passionate about 
-                building intelligent systems that solve real-world problems. With experience in machine learning research, 
-                full-stack development, and data analysis, I bridge the gap between cutting-edge research and practical applications.
-              </p>
               <p className="text-[#cccccc]">
-                My work spans from developing ML models for chaotic systems prediction to building full-stack applications 
-                like PhysicAI Therapy and TradeLens. I'm particularly interested in Machine Learning, Financial Modeling, 
-                and Crystallography research.
+                I'm Andrew Li, a Computer Science and Applied Mathematics major at the University of California, Berkeley, born and raised in the San Francisco Bay Area. My interests lie at the intersection of computation, artificial intelligence, and quantitative modeling, applying these tools to solve real-world problems in fields like finance, healthcare, and physics. I have explored topics ranging from machine learning for chaotic systems and AI-powered product design to computational simulation and full-stack development. Outside of academics, I love playing volleyball, snowboarding, and finding creative ways to blend technology with sports and everyday life.
               </p>
             </Card>
 
