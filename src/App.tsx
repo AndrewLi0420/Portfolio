@@ -4,7 +4,7 @@ import { InteractiveTerminal } from './components/InteractiveTerminal';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
 import { Badge } from './components/ui/badge';
 import { Card } from './components/ui/card';
-import { Github, Linkedin, Mail, FileText, Code2, Brain, Award, BookOpen } from 'lucide-react';
+import { Github, Linkedin, Mail, Code2, Brain, Award, BookOpen, Briefcase } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('terminal');
@@ -30,6 +30,37 @@ export default function App() {
       tech: ['React', 'FastAPI', 'PyTorch', 'PostgreSQL', 'REST APIs', 'NLP', 'Feed Forward & Long Short-Term Memory Neural Networks', 'TensorFlow'],
       link: '#',
       status: 'In Progress',
+    },
+  ];
+
+  const workExperience = [
+    {
+      title: 'Software Engineering Intern',
+      company: 'Outsampler',
+      location: 'Berkeley, CA',
+      period: 'December 2025 - Present',
+      description: 'Outsampler is an AI-powered financial technology company specializing in explainable AI agents for institutional asset management. They develop interpretable systems that autonomously monitor, analyze, and provide transparent reasoning for patterns and anomalies in complex financial time-series data, enabling institutional investors to make confident, compliant decisions. At Outsampler, I developed interpretable AI agents for financial time-series reasoning, increasing anomaly detection precision by 15% through Small Language Model architectures that provide causal reasoning for outliers across over 1000 institutional risk and high-dimensional market datasets. I also architected secure on-premise fine-tuning APIs and encrypted pipelines to protect proprietary customer data, reducing security vulnerability exposure by 25%.',
+    },
+    {
+      title: 'Software Engineering Intern',
+      company: 'NumisToken',
+      location: 'Berkeley, CA',
+      period: 'November 2025 - Present',
+      description: 'NumisToken is a blockchain-powered digital coin marketplace that bridges traditional numismatics with modern cryptocurrency technology. The platform enables collectors and investors to buy, sell, and trade digital representations of rare coins with verified authenticity, leveraging smart contracts for transparent ownership tracking and secure transactions. At NumisToken, I built and maintained Java REST APIs supporting hundreds of daily user transactions and secured digital coin purchase flows backed by Stripe. By optimizing PostgreSQL schemas and implementing transactional locking, I reduced query latency by ~30% and improved checkout success by ~10%. I also architected blockchain-based smart contract integrations using Web3j.js to record ownership changes on-chain, improving transparency and auditability of over 500 marketplace transactions.',
+    },
+    {
+      title: 'Software Engineer (Contract)',
+      company: 'ELDÆON',
+      location: 'Berkeley, CA',
+      period: 'November 2025 - December 2025',
+      description: 'ELDÆON is an aerospace technology company specializing in advanced passive radar systems and sensor technologies for airborne object detection. Their cutting-edge solutions provide military and civilian organizations with non-emitting, covert surveillance capabilities that detect and track aircraft, drones, and other aerial vehicles without traditional active radar signatures. At ELDÆON, I developed and integrated an XGBoost-based ML classifier into the existing C++/Node.js radar signal processing pipeline, reducing false alarms by ~20% while maintaining ~90% detection probability at sub-second latency. I also refactored Docker build configurations to enable cross-platform deployment across various operating systems, improving system reliability and maintainability.',
+    },
+    {
+      title: 'Technology Consultant',
+      company: 'Phi Beta Lambda - Future Business Leaders of America',
+      location: 'Berkeley, CA',
+      period: 'August 2025 - December 2025',
+      description: 'Phi Beta Lambda (PBL) is the collegiate division of Future Business Leaders of America (FBLA), the largest career student business organization in the world. PBL prepares students for careers in business and business-related fields through academic competitions, leadership development, and real-world consulting projects with Fortune 500 companies. As a Technology Consultant at PBL, I delivered software and analytics solutions for multiple Fortune 500 clients including Meta, TikTok, Qualcomm, and NASA. My work combined web scraping, data analysis, and UI/UX improvements to drive measurable business outcomes, helping clients optimize their operations and digital presence.',
     },
   ];
 
@@ -63,16 +94,16 @@ export default function App() {
           <span className="text-[#dcdcaa]">const</span> <span className="text-[#9cdcfe]">developer</span> = {'{'}
         </div>
         <div className="ml-4 text-[#ce9178]">name: <span className="text-[#ce9178]">"Andrew Li"</span>,</div>
-        <div className="ml-4 text-[#ce9178]">role: <span className="text-[#ce9178]">"Computer Science & Applied Math Student"</span>,</div>
+        <div className="ml-4 text-[#ce9178]">role: <span className="text-[#ce9178]">"Computer Science Student"</span>,</div>
         <div className="ml-4 text-[#ce9178]">location: <span className="text-[#ce9178]">"Berkeley, CA"</span>,</div>
-        <div className="ml-4 text-[#ce9178]">education: <span className="text-[#ce9178]">"UC Berkeley - B.S. Computer Science & Applied Math (GPA: 4.0)"</span>,</div>
+        <div className="ml-4 text-[#ce9178]">education: <span className="text-[#ce9178]">"UC Berkeley - B.S. Computer Science (GPA: 4.0)"</span>,</div>
         <div className="ml-4 text-[#ce9178]">passion: <span className="text-[#ce9178]">"Building ML systems and full-stack applications that solve real-world problems"</span></div>
         <div>{'};'}</div>
         <div className="mt-4 text-[#6a9955]">
           // Experienced in developing ML models, full-stack applications, and research.
         </div>
         <div className="text-[#6a9955]">
-          // Research interests: Machine Learning, Chaotic Systems, Crystallography, and Financial Modeling.
+          // Research interests: Machine Learning, Chaotic Systems, Quantum Materials, and Financial Markets Modeling.
         </div>
       </div>
     ),
@@ -165,36 +196,15 @@ export default function App() {
     ),
     experience: (
       <div className="text-[#cccccc] space-y-3">
-        <div>
-          <div className="text-[#4ec9b0]">Technology Analyst @ Phi Beta Lambda</div>
-          <div className="ml-4 text-[#6a9955]">September 2025 - Present</div>
-          <div className="ml-4 text-[#cccccc]">
-            • Executed 12-week curriculum covering Python libraries, R, web development, and Figma
+        <div className="text-[#569cd6] mb-2">Work Experience:</div>
+        {workExperience.map((job, index) => (
+          <div key={index}>
+            <div className="text-[#4ec9b0]">{job.title} @ {job.company}</div>
+            <div className="ml-4 text-[#9cdcfe]">{job.location}</div>
+            <div className="ml-4 text-[#6a9955]">{job.period}</div>
+            <div className="ml-4 text-[#cccccc] mt-2">{job.description}</div>
           </div>
-          <div className="ml-4 text-[#cccccc]">
-            • Delivered software solutions for Fortune 500 clients (Qualcomm, Meta, Google, TikTok)
-          </div>
-        </div>
-        <div>
-          <div className="text-[#4ec9b0]">Student Researcher @ UC Santa Cruz</div>
-          <div className="ml-4 text-[#6a9955]">July 2024 - August 2024</div>
-          <div className="ml-4 text-[#cccccc]">
-            • Engineered software-assisted pipelines to analyze 50+ crystallographic datasets
-          </div>
-          <div className="ml-4 text-[#cccccc]">
-            • Constructed Python scripts to visualize diffraction peaks with Matplotlib and NumPy
-          </div>
-        </div>
-        <div>
-          <div className="text-[#4ec9b0]">Research Intern @ Dr. Akl Lab</div>
-          <div className="ml-4 text-[#6a9955]">January 2024 - May 2024</div>
-          <div className="ml-4 text-[#cccccc]">
-            • Modeled chaotic multi-pendulum dynamics in C++ using Runge-Kutta method
-          </div>
-          <div className="ml-4 text-[#cccccc]">
-            • Implemented and evaluated 10+ ML models (LSTM, RNN, GRU) with TensorFlow
-          </div>
-        </div>
+        ))}
       </div>
     ),
   };
@@ -205,7 +215,7 @@ export default function App() {
         ╔═════════════════════════════════════════════════════════════╗
       </div>
         <div className="text-[#4ec9b0]">
-          ║   My name is Andrew - Computer Science & Applied Math Student      ║
+          ║{'\u00A0\u00A0\u00A0'}My name is Andrew - Computer Science Student{'\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0'}║
         </div>
       <div className="text-[#4ec9b0] mb-4">
         ╚═════════════════════════════════════════════════════════════╝
@@ -222,15 +232,6 @@ export default function App() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8 text-center">
-          <div className="inline-block">
-            <pre className="text-[#4ec9b0] text-sm mb-4" style={{ fontFamily: 'monospace, "Courier New", Courier' }}>
-{`       ____             __                         __     _ 
-      /   |  ____  ____/ /_______  _      __      / /   (_)
-     / /| | / __ \\/ __  / ___/ _ \\| | /| / /    / /   / / 
-    / ___ |/ / / / /_/ / /  /  __/| |/ |/ /     / /___/ /  
-/_/  |_|\\_||_/ \\___/_/   \\___/ |__/|__/    /_____/_/`}
-            </pre>
-          </div>
           <div className="flex items-center justify-center gap-4 mt-4">
             <a href="https://github.com/AndrewLi0420" target="_blank" rel="noopener noreferrer" className="text-[#9cdcfe] hover:text-[#569cd6] transition-colors">
               <Github className="w-5 h-5" />
@@ -241,9 +242,6 @@ export default function App() {
             <a href="mailto:andrewli0420@gmail.com" className="text-[#9cdcfe] hover:text-[#569cd6] transition-colors">
               <Mail className="w-5 h-5" />
             </a>
-        <a href="https://drive.google.com/file/d/1p6lK02JviqCiz3OuCQNnPW3YUZwaKAwf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="text-[#9cdcfe] hover:text-[#569cd6] transition-colors">
-          <FileText className="w-5 h-5" />
-        </a>
           </div>
         </div>
 
@@ -283,7 +281,7 @@ export default function App() {
                 About Me
               </h2>
               <p className="text-[#cccccc]">
-                I'm Andrew Li, a Computer Science and Applied Mathematics major at the University of California, Berkeley, born and raised in the San Francisco Bay Area. My interests lie at the intersection of computation, artificial intelligence, and quantitative modeling, applying these tools to solve real-world problems in fields like finance, healthcare, and physics. I have explored topics ranging from machine learning for chaotic systems and AI-powered product design to computational simulation and full-stack development. Outside of academics, I love playing volleyball, snowboarding, and finding creative ways to blend technology with sports and everyday life.
+                I'm Andrew Li, a Computer Science major at the University of California, Berkeley, born and raised in the San Francisco Bay Area. My interests lie at the intersection of computation, artificial intelligence, and quantitative modeling, applying these tools to solve real-world problems in fields like finance, healthcare, and physics. I have explored topics ranging from machine learning for chaotic systems and AI-powered product design to computational simulation and full-stack development. Outside of academics, I love playing volleyball, snowboarding, and finding creative ways to blend technology with sports and everyday life.
               </p>
             </Card>
 
@@ -351,6 +349,24 @@ export default function App() {
               </div>
             </Card>
 
+            {/* Work Experience Section */}
+            <Card className="p-6 bg-[#252526] border-[#3c3c3c]">
+              <h2 className="text-[#4ec9b0] mb-4 flex items-center gap-2">
+                <Briefcase className="w-5 h-5" />
+                Work Experience
+              </h2>
+              <div className="space-y-4">
+                {workExperience.map((job, index) => (
+                  <div key={index} className="border-l-2 border-[#569cd6] pl-4">
+                    <h3 className="text-[#dcdcaa] mb-1">{job.title}</h3>
+                    <p className="text-[#9cdcfe] text-sm mb-1">{job.company} - {job.location}</p>
+                    <p className="text-[#6a9955] text-sm mb-2">{job.period}</p>
+                    <p className="text-[#cccccc] text-sm leading-relaxed">{job.description}</p>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
             {/* Research Section */}
             <Card className="p-6 bg-[#252526] border-[#3c3c3c]">
               <h2 className="text-[#4ec9b0] mb-4 flex items-center gap-2">
@@ -386,10 +402,6 @@ export default function App() {
                 <a href="https://github.com/AndrewLi0420" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#9cdcfe] hover:text-[#569cd6] transition-colors">
                   <Github className="w-5 h-5" />
                   GitHub Profile
-                </a>
-                <a href="https://drive.google.com/file/d/1p6lK02JviqCiz3OuCQNnPW3YUZwaKAwf/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[#9cdcfe] hover:text-[#569cd6] transition-colors">
-                  <FileText className="w-5 h-5" />
-                  Resume/CV
                 </a>
               </div>
             </Card>
