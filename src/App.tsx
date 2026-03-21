@@ -35,25 +35,32 @@ export default function App() {
 
   const workExperience = [
     {
-      title: 'Software Engineering Intern',
+      title: 'Software Engineer (Contract)',
+      company: 'BMW Group',
+      location: 'Mountain View, CA',
+      period: 'February 2026 - April 2026',
+      description: 'BMW Group is a global leader in premium automotive and mobility solutions. At BMW Group, I built an AI-powered data research system to scrape and aggregate information on 1,000+ companies across multiple market segments. I designed a data validation pipeline to verify URL validity and cross-check extracted attributes, reducing hallucinated data by ~30% across 1,000+ company records through schema checks and type normalization. I also engineered a JSON-based data architecture to store 50+ structured fields per company and built parsing and sync pipelines integrating external sources, automating ingestion and scheduling weekly updates of hundreds of records.',
+    },
+    {
+      title: 'AI Research Engineer Intern',
       company: 'Outsampler',
       location: 'Berkeley, CA',
       period: 'December 2025 - Present',
-      description: 'Outsampler is an AI-powered financial technology company specializing in explainable AI agents for institutional asset management. They develop interpretable systems that autonomously monitor, analyze, and provide transparent reasoning for patterns and anomalies in complex financial time-series data, enabling institutional investors to make confident, compliant decisions. At Outsampler, I developed interpretable AI agents for financial time-series reasoning, increasing anomaly detection precision by 15% through Small Language Model architectures that provide causal reasoning for outliers across over 1000 institutional risk and high-dimensional market datasets. I also architected secure on-premise fine-tuning APIs and encrypted pipelines to protect proprietary customer data, reducing security vulnerability exposure by 25%.',
+      description: 'Outsampler is an AI-powered financial technology company specializing in explainable AI agents for institutional asset management. They develop interpretable systems that autonomously monitor, analyze, and provide transparent reasoning for patterns and anomalies in complex financial time-series data. At Outsampler, I developed interpretable AI agents for financial time-series reasoning within institutional asset management. I improved output diversity of constrained-decoding small language models by ~20% by generating and ranking multi-candidate SQL queries across financial datasets through Python scripts and inference workflows. I also evaluated research-informed text-to-SQL generation performance across 1,000+ prompts, benchmarking prompt bias and decoding parameters using 5 open-source language models of various sizes hosted on virtual machines.',
     },
     {
-      title: 'Software Engineering Intern',
+      title: 'Software Engineer Intern',
       company: 'NumisToken',
       location: 'Berkeley, CA',
       period: 'November 2025 - Present',
-      description: 'NumisToken is a blockchain-powered digital coin marketplace that bridges traditional numismatics with modern cryptocurrency technology. The platform enables collectors and investors to buy, sell, and trade digital representations of rare coins with verified authenticity, leveraging smart contracts for transparent ownership tracking and secure transactions. At NumisToken, I built and maintained Java REST APIs supporting hundreds of daily user transactions and secured digital coin purchase flows backed by Stripe. By optimizing PostgreSQL schemas and implementing transactional locking, I reduced query latency by ~30% and improved checkout success by ~10%. I also architected blockchain-based smart contract integrations using Web3j.js to record ownership changes on-chain, improving transparency and auditability of over 500 marketplace transactions.',
+      description: 'NumisToken is a blockchain-powered digital coin marketplace that bridges traditional numismatics with modern cryptocurrency technology. The platform enables collectors and investors to buy, sell, and trade digital representations of rare coins with verified authenticity, leveraging smart contracts for transparent ownership tracking and secure transactions. At NumisToken, I built and maintained Java REST APIs for a digital coin marketplace supporting hundreds of daily user transactions. I secured digital coin purchase and transfer flows backed by Stripe by optimizing PostgreSQL schemas and implementing transactional locking, reducing query latency by ~30% and improving checkout success by ~10%. I also architected and maintained blockchain-based smart contract integrations using Web3j.js to record digital coin ownership changes on-chain, improving transparency and auditability of over 500 marketplace transactions.',
     },
     {
       title: 'Software Engineer (Contract)',
       company: 'ELDÆON',
       location: 'Berkeley, CA',
-      period: 'November 2025 - December 2025',
-      description: 'ELDÆON is an aerospace technology company specializing in advanced passive radar systems and sensor technologies for airborne object detection. Their cutting-edge solutions provide military and civilian organizations with non-emitting, covert surveillance capabilities that detect and track aircraft, drones, and other aerial vehicles without traditional active radar signatures. At ELDÆON, I developed and integrated an XGBoost-based ML classifier into the existing C++/Node.js radar signal processing pipeline, reducing false alarms by ~20% while maintaining ~90% detection probability at sub-second latency. I also refactored Docker build configurations to enable cross-platform deployment across various operating systems, improving system reliability and maintainability.',
+      period: 'October 2025 - December 2025',
+      description: 'ELDÆON is an aerospace technology company specializing in advanced passive radar systems and sensor technologies for airborne object detection. Their solutions provide military and civilian organizations with non-emitting, covert surveillance capabilities that detect and track aircraft, drones, and other aerial vehicles without traditional active radar signatures. At ELDÆON, I leveraged data from passive radar systems and other advanced measurement tools to detect airborne objects. I developed and integrated an XGBoost-based ML classifier into the existing C++/Node.js radar signal processing pipeline, reducing false alarms by ~20% while handling 100+ detections per second with sub-100ms latency. I also refactored Docker build configurations to enable cross-platform deployment across various operating systems.',
     },
     {
       title: 'Technology Consultant',
@@ -61,6 +68,20 @@ export default function App() {
       location: 'Berkeley, CA',
       period: 'August 2025 - December 2025',
       description: 'Phi Beta Lambda (PBL) is the collegiate division of Future Business Leaders of America (FBLA), the largest career student business organization in the world. PBL prepares students for careers in business and business-related fields through academic competitions, leadership development, and real-world consulting projects with Fortune 500 companies. As a Technology Consultant at PBL, I delivered software and analytics solutions for multiple Fortune 500 clients including Meta, TikTok, Qualcomm, and NASA. My work combined web scraping, data analysis, and UI/UX improvements to drive measurable business outcomes, helping clients optimize their operations and digital presence.',
+    },
+    {
+      title: 'Software Engineer Intern',
+      company: 'Sync Visual Media',
+      location: 'Phoenix, AZ',
+      period: 'June 2025 - August 2025',
+      description: 'Sync Visual Media is a digital media and web development agency focused on building client-facing platforms and optimizing online visibility. At Sync Visual Media, I developed full-stack web applications for client platforms using React and Python-based APIs, optimizing user flows, UI/UX, and backend performance to increase visitor-to-customer conversion rates by ~15% per client. I also engineered SEO rendering pipelines — including metadata tagging, structured schema, and image indexing — to optimize 100+ digital assets for clients, boosting search ranking visibility across Google Image and web results.',
+    },
+    {
+      title: 'Machine Learning Research Intern',
+      company: 'Dr. Akl Lab',
+      location: 'Fremont, CA',
+      period: 'January 2024 - May 2024',
+      description: 'Dr. Akl Lab is a computational research lab focused on physics simulation, materials science, and machine learning applications for complex dynamical systems. At Dr. Akl Lab, I simulated and collected time-series data from a chaotic multi-pendulum system in Python, generating 10,000+ synthetic trajectories with object-oriented simulation to study long-horizon prediction under noisy dynamics. I trained and evaluated 10+ sequence models — including LSTM, GRU, vanilla RNN, and regression baselines — in TensorFlow to forecast future states of a chaotic system, improving prediction accuracy on unseen trajectories by ~15%.',
     },
   ];
 
