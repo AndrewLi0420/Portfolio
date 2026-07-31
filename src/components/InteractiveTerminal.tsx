@@ -6,11 +6,12 @@ interface Command {
 }
 
 interface InteractiveTerminalProps {
-  welcomeMessage: React.ReactNode;
+  welcomeMessage?: React.ReactNode;
   commands: Record<string, React.ReactNode>;
+  promptUser?: string;
 }
 
-export function InteractiveTerminal({ welcomeMessage, commands }: InteractiveTerminalProps) {
+export function InteractiveTerminal({ welcomeMessage, commands, promptUser = 'guest@andrewli' }: InteractiveTerminalProps) {
   const [history, setHistory] = useState<Command[]>([]);
   const [currentInput, setCurrentInput] = useState('');
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -46,7 +47,7 @@ export function InteractiveTerminal({ welcomeMessage, commands }: InteractiveTer
       output = commands[trimmedInput];
     } else {
       output = (
-        <div className="text-[#f48771]">
+        <div className="tp-cli-accent">
           Command not found: {trimmedInput}. Type 'help' for available commands.
         </div>
       );
@@ -89,32 +90,34 @@ export function InteractiveTerminal({ welcomeMessage, commands }: InteractiveTer
   return (
     <div
       ref={terminalRef}
-      className="h-[500px] overflow-y-auto cursor-text"
+      className="tp-cli-body"
       onClick={() => inputRef.current?.focus()}
     >
-      <div className="mb-4">{welcomeMessage}</div>
-      
+      {welcomeMessage && <div className="mb-4">{welcomeMessage}</div>}
+
       {history.map((cmd, index) => (
-        <div key={index} className="mb-4">
+        <div key={index}>
           <div className="flex items-center gap-2">
-            <span className="text-[#4ec9b0]">➜</span>
-            <span className="text-[#569cd6]">~</span>
-            <span className="text-[#cccccc]">{cmd.input}</span>
+            <span className="tp-prompt-user">{promptUser}</span>
+            <span className="tp-prompt-tilde">~</span>
+            <span className="tp-prompt-symbol">%</span>
+            <span>{cmd.input}</span>
           </div>
-          <div className="mt-2 ml-6">{cmd.output}</div>
+          <div>{cmd.output}</div>
         </div>
       ))}
 
       <div className="flex items-center gap-2">
-        <span className="text-[#4ec9b0]">➜</span>
-        <span className="text-[#569cd6]">~</span>
+        <span className="tp-prompt-user">{promptUser}</span>
+        <span className="tp-prompt-tilde">~</span>
+        <span className="tp-prompt-symbol">%</span>
         <input
           ref={inputRef}
           type="text"
           value={currentInput}
           onChange={(e) => setCurrentInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-1 bg-transparent outline-none text-[#cccccc] caret-[#cccccc]"
+          className="tp-cli-input"
           autoFocus
         />
       </div>

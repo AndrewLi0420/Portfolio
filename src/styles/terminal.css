@@ -1,0 +1,213 @@
+/* Minimal terminal-doc theme: flat, chromeless, monospace. */
+
+:root {
+  --tp-bg: #0a0a0a;
+  --tp-fg: #c4c4c4;
+  --tp-fg-bright: #f2f2f2;
+  --tp-muted: #6b6b6b;
+  --tp-accent: #dba876;
+  --tp-blue: #6ab0f3;
+  --tp-link: #d0d0d0;
+  --tp-rule: #2a2a2a;
+  --tp-error: #e06c75;
+}
+
+.tp-page {
+  min-height: 100vh;
+  background: var(--tp-bg);
+  color: var(--tp-fg);
+  font-family: 'SF Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+/* Shared column: both modes share the same max-width/padding so the
+   toggle, prompt, and text content all line up on the same edges. */
+
+.tp-shell {
+  position: relative;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.tp-toggle {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--tp-muted);
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.tp-toggle:hover {
+  color: var(--tp-fg);
+}
+
+/* CLI mode */
+
+.tp-shell--cli {
+  min-height: 100vh;
+  padding-top: 9rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.tp-prompt-user {
+  color: var(--tp-fg-bright);
+}
+
+.tp-prompt-tilde {
+  color: var(--tp-blue);
+}
+
+.tp-prompt-symbol {
+  color: var(--tp-muted);
+}
+
+.tp-cli-accent {
+  color: var(--tp-accent);
+  font-weight: 700;
+}
+
+.tp-bold {
+  font-weight: 700;
+}
+
+.tp-cli-body {
+  flex: 1;
+  overflow-y: auto;
+  cursor: text;
+}
+
+.tp-cli-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--tp-fg);
+  caret-color: var(--tp-fg);
+  font: inherit;
+}
+
+/* GUI mode */
+
+.tp-shell--gui {
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+}
+
+.tp-name {
+  color: var(--tp-fg-bright);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.tp-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+  font-size: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.tp-links + .tp-hr {
+  margin-top: 0;
+}
+
+.tp-links a.tp-link {
+  color: var(--tp-muted);
+  text-decoration: none;
+}
+
+.tp-links a.tp-link:hover {
+  color: var(--tp-fg-bright);
+  text-decoration: underline;
+}
+
+.tp-hr {
+  border: none;
+  border-top: 1px solid var(--tp-rule);
+  margin: 1.75rem 0;
+}
+
+.tp-hr--accent {
+  border-top-color: var(--tp-accent);
+}
+
+.tp-intro p,
+.tp-body p {
+  margin-bottom: 1.1rem;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.tp-section {
+  margin-bottom: 2.25rem;
+}
+
+.tp-section-title {
+  color: var(--tp-accent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+  margin-bottom: 1rem;
+}
+
+.tp-list {
+  list-style: none;
+  font-size: 12px;
+}
+
+.tp-list li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.tp-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--tp-muted);
+}
+
+a.tp-link {
+  color: var(--tp-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a.tp-link:hover {
+  color: var(--tp-fg-bright);
+}
+
+.tp-muted {
+  color: var(--tp-muted);
+}
+
+.tp-footer {
+  margin-top: 3rem;
+  font-size: 12px;
+  color: var(--tp-muted);
+}
+
+@media (max-width: 640px) {
+  .tp-shell--gui,
+  .tp-shell--cli {
+    padding-top: 6rem;
+  }
+
+  .tp-toggle {
+    top: 1.25rem;
+    right: 1.25rem;
+  }
+}
