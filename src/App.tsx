@@ -3,7 +3,7 @@ import { InteractiveTerminal } from './components/InteractiveTerminal';
 import { GuiPage } from './components/GuiPage';
 
 export default function App() {
-  const [mode, setMode] = useState<'cli' | 'gui'>('gui');
+  const [mode, setMode] = useState<'cli' | 'gui'>('cli');
 
   const projects = [
     { name: 'Cryptographic Training Data Watermarking for LLMs' },

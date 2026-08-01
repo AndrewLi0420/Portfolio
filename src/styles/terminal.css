@@ -34,7 +34,7 @@
 
 .tp-toggle {
   position: absolute;
-  top: 1.75rem;
+  top: 8.9rem; /* matches the shell's padding-top so it sits on the first line of content */
   right: 1.5rem;
   background: none;
   border: none;
@@ -325,7 +325,7 @@ a.tp-link:hover {
   }
 
   .tp-toggle {
-    top: 1.25rem;
+    top: 5.9rem;
     right: 1.25rem;
   }
 }
