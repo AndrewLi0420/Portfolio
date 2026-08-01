@@ -10,7 +10,7 @@ interface HistoryEntry {
   user: string;
   directory: string;
   command: string;
-  result: string;
+  result: React.ReactNode;
 }
 
 interface InteractiveTerminalProps {
@@ -20,20 +20,78 @@ interface InteractiveTerminalProps {
   onToggle?: () => void;
 }
 
-const CLAUDE_HELP = `Hey, I'm Claude. Andrew asked me to stick around and help anyone who wanders in here.
+// Pixel grid rather than block glyphs -- block characters leave seams between rows.
+const MASCOT = [
+  '..########..',
+  '.##########.',
+  '.##.####.##.',
+  '.##########.',
+  '.##########.',
+  '.#.#....#.#.',
+];
 
-This is a fake shell, but it works like a real one. You're standing in a directory (see the blue bit in your prompt) and there are files and folders around you.
+function Mascot() {
+  return (
+    <div className="tp-claude-mascot">
+      {MASCOT.map((row, y) =>
+        row.split('').map((cell, x) => (
+          <span key={`${y}-${x}`} className={cell === '#' ? 'tp-px tp-px--on' : 'tp-px'} />
+        )),
+      )}
+    </div>
+  );
+}
 
-Three commands get you everywhere:
-  ls    lists what's in the current directory. \`ls\` on its own, or \`ls about\` to peek inside a folder without moving.
-  cd    changes directory. \`cd about\` to go in, \`cd ..\` to go back up, \`cd\` on its own to jump home to ~.
-  cat   prints a file. \`cat about/intro.txt\`, or \`cd about\` first and then just \`cat intro.txt\`.
+function ClaudeBanner() {
+  return (
+    <div className="tp-claude">
+      <div className="tp-claude-title">
+        Claude Code <span className="tp-muted">v0.1.0</span>
+      </div>
 
-Anything ending in .txt is a file you can cat. Anything else is a folder you can cd into.
+      <div className="tp-claude-left">
+        <div className="tp-claude-welcome">Welcome to Andrew's terminal!</div>
+        <Mascot />
+        <div className="tp-claude-meta">
+          Opus 5 · guest session
+          <br />
+          <span className="tp-claude-cwd">~/andrew-li</span>
+        </div>
+      </div>
 
-A few extras: \`pwd\` tells you where you are, \`clear\` wipes the screen, \`tree\` prints the whole layout at once if you'd rather skip the exploring, and \`toggle\` bails out to the normal website.
+      <div className="tp-claude-right">
+        <div className="tp-claude-heading">Getting around</div>
+        <div className="tp-claude-row">
+          <span className="tp-claude-cmd">ls</span> lists what's here — <span className="tp-claude-cmd">ls about</span> peeks
+          into a folder without moving
+        </div>
+        <div className="tp-claude-row">
+          <span className="tp-claude-cmd">cd about</span> goes in, <span className="tp-claude-cmd">cd ..</span> goes back
+          up, <span className="tp-claude-cmd">cd</span> alone returns home to ~
+        </div>
+        <div className="tp-claude-row">
+          <span className="tp-claude-cmd">cat intro.txt</span> prints a file — paths work too, like{' '}
+          <span className="tp-claude-cmd">cat about/intro.txt</span>
+        </div>
 
-Try \`ls\` and follow your curiosity. Andrew's contact info is in contact.txt if you want to reach the human.`;
+        <div className="tp-claude-sep" />
+
+        <div className="tp-claude-heading">Good to know</div>
+        <div className="tp-claude-row">
+          Anything ending in .txt is a file you can cat; everything else is a folder you can cd into
+        </div>
+        <div className="tp-claude-row">
+          <span className="tp-claude-cmd">pwd</span> · <span className="tp-claude-cmd">tree</span> ·{' '}
+          <span className="tp-claude-cmd">clear</span> · <span className="tp-claude-cmd">toggle</span> for the normal
+          website
+        </div>
+        <div className="tp-claude-note">
+          start with <span className="tp-claude-cmd">ls</span>, and cat contact.txt to reach the human
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const URL_PATTERN = /(https?:\/\/[^\s]+|[\w.+-]+@[\w-]+\.[\w.]+)/g;
 
@@ -102,7 +160,7 @@ export function InteractiveTerminal({
       .join('\n');
   };
 
-  const run = (raw: string): string => {
+  const run = (raw: string): React.ReactNode => {
     const [cmd, ...args] = raw.trim().split(/\s+/);
 
     switch (cmd) {
@@ -156,7 +214,7 @@ export function InteractiveTerminal({
 
       case 'claude':
       case 'help':
-        return CLAUDE_HELP;
+        return <ClaudeBanner />;
 
       case 'toggle':
         onToggle?.();
@@ -216,9 +274,12 @@ export function InteractiveTerminal({
             <span className="tp-prompt-symbol">%</span>
             <span>{entry.command}</span>
           </div>
-          {entry.result && (
-            <div className="tp-cli-output">{linkify(entry.result)}</div>
-          )}
+          {entry.result &&
+            (typeof entry.result === 'string' ? (
+              <div className="tp-cli-output">{linkify(entry.result)}</div>
+            ) : (
+              entry.result
+            ))}
         </div>
       ))}
 
