@@ -134,6 +134,7 @@
 .tp-claude-mascot {
   display: grid;
   grid-template-columns: repeat(12, 7px);
+  margin-top: 2.8rem;
 }
 
 .tp-px {
