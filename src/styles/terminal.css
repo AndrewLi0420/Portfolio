@@ -83,8 +83,17 @@
 
 .tp-cli-body {
   flex: 1;
-  overflow-y: auto;
   cursor: text;
+}
+
+.tp-cli-entry {
+  margin-bottom: 0.75rem;
+}
+
+.tp-cli-output {
+  color: var(--tp-accent);
+  line-height: 1.45;
+  white-space: pre-wrap;
 }
 
 .tp-cli-input {

@@ -5,13 +5,6 @@ import { GuiPage } from './components/GuiPage';
 export default function App() {
   const [mode, setMode] = useState<'cli' | 'gui'>('gui');
 
-  const skills = {
-    languages: ['Python', 'Java', 'C++', 'JavaScript', 'TypeScript', 'SQL', 'Scheme', 'R', 'Swift'],
-    ml: ['Neural Networks', 'Regression', 'Decision Trees', 'Random Forests', 'XGBoost', 'Monte Carlo Simulations', 'Time-Series Modeling', 'Inference Testing'],
-    web: ['React', 'Node.js', 'FastAPI', 'Flask', 'PostgreSQL', 'REST APIs', 'Tailwind CSS', 'Radix UI'],
-    tools: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'NumPy', 'Pandas', 'Matplotlib', 'Seaborn', 'Expo', 'Figma', 'Cursor'],
-  };
-
   const projects = [
     { name: 'Cryptographic Training Data Watermarking for LLMs' },
     { name: 'Machine Learning False Alarm Classifier' },
@@ -45,104 +38,43 @@ export default function App() {
     },
   ];
 
-  const terminalCommands = {
-    about: (
-      <div className="text-[#cccccc]">
-        <div className="mb-2">
-          <span className="tp-cli-accent">const</span> <span className="text-[#9cdcfe]">developer</span> = {'{'}
-        </div>
-        <div className="ml-4 text-[#ce9178]">name: <span className="text-[#ce9178]">"Andrew Li"</span>,</div>
-        <div className="ml-4 text-[#ce9178]">role: <span className="text-[#ce9178]">"Computer Science Undergrad"</span>,</div>
-        <div className="ml-4 text-[#ce9178]">location: <span className="text-[#ce9178]">"Berkeley, CA"</span>,</div>
-        <div className="ml-4 text-[#ce9178]">education: <span className="text-[#ce9178]">"UC Berkeley - B.S. Computer Science, double majoring in Statistics or Applied Mathematics (GPA: 4.0)"</span>,</div>
-        <div className="ml-4 text-[#ce9178]">passion: <span className="text-[#ce9178]">"Pursuing a career in AI, from fundamental machine learning research to applied AI through startups"</span></div>
-        <div>{'};'}</div>
-        <div className="mt-4 text-[#6a9955]">
-          // Working across the stack: research, applied ML, and full-stack engineering.
-        </div>
-        <div className="text-[#6a9955]">
-          // Research interests: Machine Learning, Chaotic Systems, Quantum Materials, and Financial Markets Modeling.
-        </div>
-      </div>
-    ),
-    skills: (
-      <div className="text-[#cccccc]">
-        <div className="mb-3">
-          <span className="text-[#c586c0]">class</span> <span className="text-[#4ec9b0]">Skills</span> {'{'}
-        </div>
-        {Object.entries(skills).map(([category, items]) => (
-          <div key={category} className="ml-4 mb-2">
-            <span className="tp-cli-accent">{category}</span>
-            <span className="text-[#cccccc]">: [</span>
-            <div className="ml-4">
-              {items.map((skill, index) => (
-                <div key={skill}>
-                  <span className="text-[#ce9178]">"{skill}"</span>
-                  {index < items.length - 1 ? ',' : ''}
-                </div>
-              ))}
-            </div>
-            <span className="text-[#cccccc]">]</span>
-            {category !== 'tools' ? ',' : ''}
-          </div>
-        ))}
-        <div>{'}'}</div>
-      </div>
-    ),
-    projects: (
-      <div className="text-[#cccccc] space-y-1">
-        {projects.map((project, index) => (
-          <div key={index} className="text-[#4ec9b0] tp-bold">
-            [{index + 1}] {project.name}
-          </div>
-        ))}
-      </div>
-    ),
-    research: (
-      <div className="text-[#cccccc] space-y-1">
-        <div className="tp-cli-accent mb-2">Research Experience:</div>
-        {research.map((pub, index) => (
-          <div key={index} className="tp-cli-accent">
-            [{index + 1}] {pub.title} <span className="text-[#9cdcfe]">({pub.role})</span>
-          </div>
-        ))}
-      </div>
-    ),
-    contact: (
-      <div className="text-[#cccccc]">
-        <div className="mb-2 tp-cli-accent">Get in touch:</div>
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <span className="text-[#4ec9b0]">📧</span>
-            <a href="mailto:andrewli0420@gmail.com" className="text-[#9cdcfe] hover:text-[#569cd6] underline">
-              andrewli0420@gmail.com
-            </a>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#4ec9b0]">💼</span>
-            <a href="https://www.linkedin.com/in/andrewli07/" target="_blank" rel="noopener noreferrer" className="text-[#9cdcfe] hover:text-[#569cd6] underline">
-              linkedin.com/in/andrewli07
-            </a>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#4ec9b0]">🐙</span>
-            <a href="https://github.com/AndrewLi0420" target="_blank" rel="noopener noreferrer" className="text-[#9cdcfe] hover:text-[#569cd6] underline">
-              github.com/AndrewLi0420
-            </a>
-          </div>
-        </div>
-      </div>
-    ),
-    experience: (
-      <div className="text-[#cccccc] space-y-1">
-        <div className="tp-cli-accent mb-2">Work Experience:</div>
-        {workExperience.map((job, index) => (
-          <div key={index} className="text-[#4ec9b0] tp-bold">
-            {job.title} @ {job.company}
-          </div>
-        ))}
-      </div>
-    ),
+  const tree = {
+    '~': { parent: null, children: ['about', 'experience', 'projects.txt', 'contact.txt'] },
+    about: { parent: '~', children: ['intro.txt', 'education.txt'] },
+    experience: { parent: '~', children: ['work.txt', 'research.txt'] },
+  };
+
+  const files = {
+    'intro.txt': `Hey, I'm Andrew.
+
+I'm an undergraduate at UC Berkeley studying Computer Science, looking to double in Statistics or Applied Mathematics as well.
+
+I want to build a career in AI adjacent roles, working across the stack from fundamental machine learning research to applied AI through startups.
+
+Right now I'm doing research at Berkeley Artificial Intelligence Research (BAIR) and recruiting for software engineering roles for Spring and Summer 2027.`,
+
+    'education.txt': `UC Berkeley -- B.A. Computer Science
+Technical GPA: 4.0
+
+Coursework:
+  DATA C8 -- Foundations of Data Science                             A
+  CS 61A  -- The Structure and Interpretation of Computer Programs   A
+  CS 61B  -- Data Structures                                         A
+  CS 70   -- Discrete Mathematics and Probability Theory             A
+  MATH 54 -- Linear Algebra and Differential Equations               A+
+  MATH 53 -- Multivariable Calculus                                  in progress
+  CS 189  -- Introduction to Machine Learning                        in progress`,
+
+    'work.txt': workExperience.map((job) => `${job.title} @ ${job.company}`).join('\n'),
+
+    'research.txt': research.map((item) => `${item.title}\n  ${item.role}`).join('\n\n'),
+
+    'projects.txt': projects.map((project, i) => `[${i + 1}] ${project.name}`).join('\n'),
+
+    'contact.txt': `Email:    andrewli0420@gmail.com
+School:   andrewli42@berkeley.edu
+LinkedIn: https://www.linkedin.com/in/andrewli07/
+GitHub:   https://github.com/AndrewLi0420`,
   };
 
   return (
@@ -154,7 +86,9 @@ export default function App() {
 
         {mode === 'cli' ? (
           <InteractiveTerminal
-            commands={terminalCommands}
+            tree={tree}
+            files={files}
+            onToggle={() => setMode('gui')}
           />
         ) : (
           <GuiPage
