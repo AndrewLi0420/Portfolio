@@ -12,13 +12,20 @@ interface ResearchItem {
   role: string;
 }
 
+interface Course {
+  code: string;
+  name: string;
+  grade: string;
+}
+
 interface GuiPageProps {
   projects: Project[];
   workExperience: Job[];
   research: ResearchItem[];
+  coursework: Course[];
 }
 
-export function GuiPage({ projects, workExperience, research }: GuiPageProps) {
+export function GuiPage({ projects, workExperience, research, coursework }: GuiPageProps) {
   return (
     <>
       <div className="tp-name">Andrew Li</div>
@@ -71,6 +78,15 @@ export function GuiPage({ projects, workExperience, research }: GuiPageProps) {
         <ul className="tp-list">
           {research.map((pub, index) => (
             <li key={index}>{pub.title} ({pub.role})</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="tp-section">
+        <div className="tp-section-title">COURSEWORK</div>
+        <ul className="tp-list">
+          {coursework.map((course, index) => (
+            <li key={index}>{course.code} — {course.name} ({course.grade})</li>
           ))}
         </ul>
       </div>

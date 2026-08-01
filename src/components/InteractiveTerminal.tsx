@@ -163,7 +163,7 @@ export function InteractiveTerminal({
         return '';
 
       default:
-        return `zsh: command not found: ${cmd}\nStuck? Type \`claude\` and I'll walk you through it.`;
+        return `zsh: command not found: ${cmd}\nStuck? Type \`claude\``;
     }
   };
 

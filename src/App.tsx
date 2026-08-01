@@ -38,6 +38,16 @@ export default function App() {
     },
   ];
 
+  const coursework = [
+    { code: 'DATA C8', name: 'Foundations of Data Science', grade: 'A' },
+    { code: 'CS 61A', name: 'The Structure and Interpretation of Computer Programs', grade: 'A' },
+    { code: 'CS 61B', name: 'Data Structures', grade: 'A' },
+    { code: 'CS 70', name: 'Discrete Mathematics and Probability Theory', grade: 'A' },
+    { code: 'MATH 54', name: 'Linear Algebra and Differential Equations', grade: 'A+' },
+    { code: 'MATH 53', name: 'Multivariable Calculus', grade: 'in progress' },
+    { code: 'CS 189', name: 'Introduction to Machine Learning', grade: 'in progress' },
+  ];
+
   const tree = {
     '~': { parent: null, children: ['about', 'experience', 'projects.txt', 'contact.txt'] },
     about: { parent: '~', children: ['intro.txt', 'education.txt'] },
@@ -57,13 +67,12 @@ Right now I'm doing research at Berkeley Artificial Intelligence Research (BAIR)
 Technical GPA: 4.0
 
 Coursework:
-  DATA C8 -- Foundations of Data Science                             A
-  CS 61A  -- The Structure and Interpretation of Computer Programs   A
-  CS 61B  -- Data Structures                                         A
-  CS 70   -- Discrete Mathematics and Probability Theory             A
-  MATH 54 -- Linear Algebra and Differential Equations               A+
-  MATH 53 -- Multivariable Calculus                                  in progress
-  CS 189  -- Introduction to Machine Learning                        in progress`,
+${coursework
+  .map(
+    (c) =>
+      `  ${c.code.padEnd(7)} -- ${c.name.padEnd(Math.max(...coursework.map((x) => x.name.length)))}   ${c.grade}`,
+  )
+  .join('\n')}`,
 
     'work.txt': workExperience.map((job) => `${job.title} @ ${job.company}`).join('\n'),
 
@@ -95,6 +104,7 @@ GitHub:   https://github.com/AndrewLi0420`,
             projects={projects}
             workExperience={workExperience}
             research={research}
+            coursework={coursework}
           />
         )}
       </div>
